@@ -18,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/', 'MainController@root')->name('root');
+
+Auth::routes();
+
