@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>@yield('title', 'LaraBBS') OrderSystem</title>
+    <title>@yield('title', 'DashBord') OrderSystem</title>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
@@ -12,8 +12,6 @@
     @include('Layouts.header')
 
     <div class="container">
-
-        @include('Tools.message')
 
         @yield('content')
 

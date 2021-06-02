@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/', 'MainController@root')->name('root');
+Route::get('/dashboard','MainController@mainpage')->name('mainpage');
+
 
 Auth::routes();
 
