@@ -17,6 +17,15 @@
                 <td>
                     {{ $reserve->current_day }}
                 </td>
+                <td>
+                    @if($reserve->validate == 1)
+                        <p color="red">Validated</p>
+                    @elseif($reserve->event_id>$reserve->current_day)
+                        <button >Cancel</button>
+                    @elseif($reserve->event_id<$reserve->current_day)
+                        <p>Expire</p>
+                    @endif
+                </td>
             </tr>
             </li>
         @endforeach

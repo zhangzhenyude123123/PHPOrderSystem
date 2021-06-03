@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Reserve;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,7 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        \App\Models\Reserve::factory(10)->create();
+        Reserve::factory(10)->create();
     }
 }

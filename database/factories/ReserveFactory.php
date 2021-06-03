@@ -27,6 +27,7 @@ class ReserveFactory extends Factory
             'reserve_code'=>$this->faker->text(),
             'event_id'=>$this->faker->randomNumber(),
             'current_day'=>$this->faker->randomNumber(),
+            'validate'=>$this->faker->numberBetween(0,0)
         ];
     }
 }

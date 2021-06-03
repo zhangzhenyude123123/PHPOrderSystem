@@ -19,6 +19,7 @@ class CreateReservesTable extends Migration
             $table->string("reserve_code")->unique();
             $table->integer("event_id");
             $table->integer("current_day");
+            $table->integer("validate");
         });
     }
 

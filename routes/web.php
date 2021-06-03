@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/', 'MainController@root')->name('root');
-Route::get('/dashboard','MainController@mainpage')->name('mainpage');
-
+Route::get('/dashboard','MainPageController@mainpage')->name('mainpage');
+Route::get('/newreserve','ReserveController@newreserve')->name('newreserve');
 
 Auth::routes();
 

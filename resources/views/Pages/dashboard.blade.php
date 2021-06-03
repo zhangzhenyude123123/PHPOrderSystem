@@ -2,7 +2,7 @@
 
 @section('title','dashboard')
 @section('content')
-
+    <span><a href="/newreserve">Newreserve</a></span>
     <div class="row mb-5">
         <div class="col-lg-9 col-md-9 topic-list">
             <div class="card ">
@@ -18,6 +18,6 @@
                 </div>
             </div>
         </div>
-
+    </div>
 @endsection
 

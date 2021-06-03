@@ -12,7 +12,7 @@
     @include('Layouts.header')
 
     <div class="container">
-
+        @include('Tools.message')
         @yield('content')
 
     </div>
