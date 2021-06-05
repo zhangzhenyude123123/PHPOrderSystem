@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('app');
-//});
-
 Route::get('/', 'MainController@root')->name('root');
 Route::get('/dashboard','MainPageController@mainpage')->name('mainpage');
 Route::get('/newreserve','ReserveController@newreserve')->name('newreserve');
+Route::post('/newreserve/edit/{user}', 'ReserveController@edit')->name('newreserve.edit');
+
+Route::get('/users/{user}', 'UsersController@show')->name('users.show');
+
 
 Auth::routes();
 

@@ -3,17 +3,16 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Reserve;
-
-class DatabaseSeeder extends Seeder
+use App\Models\Activity;
+class ActivitySeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(ActivitySeeder::class);
+        Activity::factory()->count(5)->create();
     }
 }

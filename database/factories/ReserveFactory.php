@@ -21,7 +21,6 @@ class ReserveFactory extends Factory
      */
     public function definition()
     {
-        array("abc","asd","adgeeg");
         return [
             'user_id'=> $this->faker->randomNumber(),
             'reserve_code'=>$this->faker->text(),

@@ -8,6 +8,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 
+
 body {
     font-family: Helvetica, "Microsoft YaHei", Arial, sans-serif;
     font-size: 14px;
@@ -55,4 +56,12 @@ body {
             }
         }
     }
+}
+
+.booking{
+    text-align: center;
+    height: 50px;
+    width:100px;
+    border-style:groove ;
+    margin: 10px;
 }

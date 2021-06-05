@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reserve;
 use Illuminate\Http\Request;
+use Auth;
 
 class MainPageController extends Controller
 {
@@ -15,8 +16,10 @@ class MainPageController extends Controller
     public function mainpage()
     {
         //$reserves = DB::select('select * from reserves');
-        //$reserves = Reserve::where('user_id',1)->get();
-        $reserves = Reserve::all();
+        //$reserves = Reserve::all();
+        $id = Auth::id();
+        $reserves = Reserve::where('user_id',$id)
+            ->get();
         return view('Pages.dashboard',['reserves' => $reserves]);
     }
 }
