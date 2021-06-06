@@ -12,4 +12,8 @@ class Reserve extends Model
     //don't need to update this timestamps
     public $timestamps = false;
 
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
