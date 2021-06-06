@@ -19,11 +19,11 @@
                 </td>
                 <td>
                     @if($reserve->validate == 1)
-                        <p color="red">Validated</p>
+                        <p>Verified</p>
                     @elseif($reserve->event_id>$reserve->current_day)
-                        <button >Cancel</button>
+                        <button>Cancel</button>
                     @elseif($reserve->event_id<$reserve->current_day)
-                        <p>Expire</p>
+                        <p>Passed</p>
                     @endif
                 </td>
             </tr>
@@ -32,5 +32,5 @@
 
 
 @else
-    <div class="empty-block">No reverse!!!</div>
+    <div class="empty-block">No Reservation Yet</div>
 @endif

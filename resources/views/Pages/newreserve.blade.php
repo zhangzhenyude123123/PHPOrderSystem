@@ -18,8 +18,7 @@
                         <input type="hidden" name="_method" value="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         @include('Tools.error')
-{{--                        <input type="text" name="exmal" >Test Enter--}}
-                        @for($i=1;$i<=$current_day;$i++)
+                        @for($i=getCarnivalDay()+1;$i<=getCarnivalMax();$i++)
                             <div class="form-group booking">
                             <input type="checkbox" name="input{{$i}}" value="{{$i}}">Day{{$i}}
                             </div>

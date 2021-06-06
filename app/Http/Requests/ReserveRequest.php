@@ -24,14 +24,6 @@ class ReserveRequest extends FormRequest
      */
     public function authorize(Request $request)
     {
-//        $input1 = $request->input('testname');
-//        echo ($request->path());
-//        echo($input1);
-//        $input2 = $request->all();
-//        foreach ($input2 as $item){
-//            echo $item;
-//            $input1 .= $item;
-//        }
         return true;
     }
 
@@ -40,20 +32,28 @@ class ReserveRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
-        return [
-
-        ];
+        $input = $request->all();
+        $num = 0;
+        foreach ($input as $item){
+            $num++;
+        }
+        if($num>2){
+            return [
+            ];
+        }
+        else {
+            return [
+                'input' => "required"
+            ];
+        }
     }
 
     public function messages()
     {
         return [
-            'name.unique' => '用户名已被占用，请重新填写',
-            'name.regex' => '用户名只支持英文、数字、横杠和下划线。',
-            'name.between' => '用户名必须介于 3 - 25 个字符之间。',
-            'name.required' => '用户名不能为空。',
+            'input.required' => 'You mast choose one'
         ];
     }
 }
