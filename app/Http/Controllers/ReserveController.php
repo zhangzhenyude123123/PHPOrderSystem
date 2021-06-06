@@ -6,18 +6,17 @@ use App\Http\Requests\ReserveRequest;
 use App\Models\Activity;
 use App\Models\Reserve;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
 class ReserveController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
     }
 
-    public function newreserve(User $user){
+    public function newreserve(User $user)
+    {
         //check out of the day
         $judgenum = 0;
         $message = 'No More places in Day ';
@@ -44,7 +43,8 @@ class ReserveController extends Controller
     }
 
 
-    public function edit(ReserveRequest $reserveRequest,User $user){
+    public function edit(ReserveRequest $reserveRequest,User $user)
+    {
 
         $id = $user->id;
 
@@ -101,7 +101,8 @@ class ReserveController extends Controller
     //TODO:张成伟，用户名添加限制、面面添加限制。
     //TODO:张成伟，生成唯一码。
 
-    public function getReserveDay(ReserveRequest $reserveRequest):int{
+    public function getReserveDay(ReserveRequest $reserveRequest):int
+    {
         $input = $reserveRequest->all();
         $i = 0;
         $day = 0;
@@ -109,14 +110,6 @@ class ReserveController extends Controller
             //echo "{$key}==>{$item}<br>";
             if($i>1){
                 $day = (int)$item;
-//                //调用操作数据库访问函数
-//                $reserve = new Reserve;
-//                $reserve->user_id = $user->id;
-//                $reserve->reserve_code = "abcdeg";
-//                $reserve->event_id = $day;
-//                $reserve->current_day = getCarnivalDay();
-//                $reserve->validate = 0;
-//                $reserve->save();
             }
             $i++;
         }

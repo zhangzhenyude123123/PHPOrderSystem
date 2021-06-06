@@ -22,7 +22,7 @@ class ReserveRequest extends FormRequest
      * @param Request $request
      * @return bool
      */
-    public function authorize(Request $request)
+    public function authorize()
     {
         return true;
     }

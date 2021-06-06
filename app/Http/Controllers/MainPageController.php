@@ -8,15 +8,14 @@ use Auth;
 
 class MainPageController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
     }
 
     public function mainpage()
     {
-        //$reserves = DB::select('select * from reserves');
-        //$reserves = Reserve::all();
         $id = Auth::id();
         $reserves = Reserve::where('user_id',$id)
             ->get();

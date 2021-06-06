@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    public function show(User $user){
+    public function show(User $user)
+    {
 
         return view('Pages.show', compact('user'));
     }

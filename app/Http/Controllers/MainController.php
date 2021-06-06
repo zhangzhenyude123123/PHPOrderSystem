@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
-    public function __construct()
-    {
-    }
 
     public function root()
     {

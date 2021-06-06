@@ -19,7 +19,8 @@ Route::get('/newreserve','ReserveController@newreserve')->name('newreserve');
 Route::post('/newreserve/edit/{user}', 'ReserveController@edit')->name('newreserve.edit');
 
 Route::get('/users/{user}', 'UsersController@show')->name('users.show');
-
+Route::get('/checkin','CheckController@show')->name('check.show');
+Route::post('/checkin/authcode', 'CheckController@authfun')->name('check.auth');
 
 Auth::routes();
 
