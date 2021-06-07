@@ -9,7 +9,6 @@ class UsersController extends Controller
 {
     public function show(User $user)
     {
-
         return view('Pages.show', compact('user'));
     }
 }

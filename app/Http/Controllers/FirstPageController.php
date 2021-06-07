@@ -6,12 +6,12 @@ use App\Models\Reserve;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class MainController extends Controller
+class FirstPageController extends Controller
 {
 
-    public function root()
+    public function show()
     {
-        return view('Pages.root');
+        return view('Pages.frontpage');
     }
 
 }

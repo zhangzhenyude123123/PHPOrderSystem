@@ -21,7 +21,11 @@
                     @if($reserve->validate == 1)
                         <p>Verified</p>
                     @elseif($reserve->event_id>$reserve->current_day)
-                        <button>Cancel</button>
+                        <form action="{{ route('reserve.cancel',$reserve->id) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-block" type="submit" name="button">Cancel</button>
+                        </form>
                     @elseif($reserve->event_id<$reserve->current_day)
                         <p>Passed</p>
                     @endif

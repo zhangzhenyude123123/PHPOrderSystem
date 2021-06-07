@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CheckRequest extends FormRequest
@@ -11,8 +12,13 @@ class CheckRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(Request $request)
     {
+//        $input = $request->all();
+//        foreach ($input as $item){
+//            echo($item);
+//            echo("<br>");
+//        }
         return true;
     }
 

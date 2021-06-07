@@ -58,7 +58,6 @@ class ReserveController extends Controller
             return redirect()->route('newreserve')->with('warning', 'You have Reserve this day!');
         }
 
-//        return view("Pages.test");
         $reserve = new Reserve;
         $reserve->user_id = $user->id;
         $reserve->reserve_code = "abcdee";
@@ -89,23 +88,6 @@ class ReserveController extends Controller
 //        }
     }
 
-
-    //TODO:添加预定，把数据放到数据库。可以通过request一下对这获得的day1-n进行都添加到数据库。Success
-    //TODO:在dashboard中根据userid来查数据库 Success
-    //TODO:当前预约函数判定，需要判断这个用户当前天数，是否预约。Success
-    //TODO:总计预约函数判定，需要判断这个用户当前预约总天数。 小于3天。Success
-    //TODO:函数4，输入当前天号，计算今天预约总数函数。Success
-    //TODO:与当天天号进行判断，只显示大于当前日期的div Success
-    //TODO:调用函数4，大于10进行页面提醒。Success
-    //TODO:一天只能预约一次的功能，(规定的）应该放到input获取下面，而且这个天，应该是input的day，进行查询。 Success
-    //TODO:每次在进行选择前，系统把超过10次的天数预定显示出来。Success
-    //TODO:cancel取消从数据中。
-
-    //TODO:预定页面添加js代码，限定只能点一个「改变这个需求」
-    //TODO:Session 对话框，3秒消失 「暂时不使用这个需求」
-
-    //TODO:张成伟，用户名添加限制、面面添加限制。
-    //TODO:张成伟，生成唯一码。
 
     public function getReserveDay(ReserveRequest $reserveRequest):int
     {
@@ -172,3 +154,21 @@ class ReserveController extends Controller
         }
     }
 }
+
+//TODO:添加预定，把数据放到数据库。可以通过request一下对这获得的day1-n进行都添加到数据库。Success
+//TODO:在dashboard中根据userid来查数据库 Success
+//TODO:当前预约函数判定，需要判断这个用户当前天数，是否预约。Success
+//TODO:总计预约函数判定，需要判断这个用户当前预约总天数。 小于3天。Success
+//TODO:函数4，输入当前天号，计算今天预约总数函数。Success
+//TODO:与当天天号进行判断，只显示大于当前日期的div Success
+//TODO:调用函数4，大于10进行页面提醒。Success
+//TODO:一天只能预约一次的功能，(规定的）应该放到input获取下面，而且这个天，应该是input的day，进行查询。 Success
+//TODO:每次在进行选择前，系统把超过10次的天数预定显示出来。Success
+//TODO:checkin 之后，header显示不该显示的按钮,应该为清除session记录 Success
+//TODO:cancel取消从数据中。 Success
+//TODO:签到成功页面3秒跳转 Success
+
+//TODO:预定页面添加js代码，限定只能点一个「改变这个需求」
+
+//TODO:张成伟，用户名添加限制、面面添加限制。
+//TODO:张成伟，生成唯一码。
