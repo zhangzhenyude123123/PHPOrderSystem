@@ -1,30 +1,34 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>@yield('title', 'LaraBBS') OrderSystem</title>
+    <meta charset="utf-8" />
+    <title>Carnival System</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+
+    <link href="{{ URL::asset('css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('css/toastr.css') }}" rel="stylesheet" />
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body>
+<body id="page-top">
+
 <div id="app" class="{{ route_class() }}-page">
 
+    {{--Navigation--}}
     @include('Layouts.header')
-
-    <div class="container">
-
-        @include('Tools.message')
 
         @yield('content')
 
-    </div>
-
+    {{--Footer--}}
     @include('Layouts.footer')
+
 </div>
 
+
 <script src="{{ mix('js/app.js') }}"></script>
-<script src='js/toastr.js'></script>
+<script src="{{ URL::asset('js/toastr.js') }}"></script>
 
 </body>
-
 </html>

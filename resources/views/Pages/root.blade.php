@@ -1,11 +1,14 @@
 @extends('Layouts.app')
-@section('title', '首页')
+@section('title', 'MainPage')
 
 @section('content')
-    <h1>This is a Picture</h1>
-
-   <div>
-       <a href="{{Route('check.show')}}">Check IN</a>
-   </div>
-
+<div id="mainpage">
+    <header class="masthead">
+        <div class="container">
+            <div class="masthead-subheading">Welcome To Our Party!</div>
+            <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+            <a class="btn btn-primary btn-xl text-uppercase" href="{{Route('check.show')}}">Check IN</a>
+        </div>
+    </header>
+</div>
 @stop

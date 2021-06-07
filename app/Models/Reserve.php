@@ -12,8 +12,8 @@ class Reserve extends Model
     //don't need to update this timestamps
     public $timestamps = false;
 
-    public function users()
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Models\User');
     }
 }

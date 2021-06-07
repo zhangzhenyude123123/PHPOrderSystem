@@ -41,8 +41,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function reserves()
+    public function reserves(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Reserve::class);
+        return $this->hasMany('App\Models\Reserve');
     }
 }

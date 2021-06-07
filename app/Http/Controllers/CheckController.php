@@ -43,27 +43,31 @@ class CheckController extends Controller
 //        }
 //        $code = $request->input('validatecode');
 //        $password = $request->input('password');
+
+        //Get the form data
         $input = $checkRequest->only("validatecode","password");
         $code = $input['validatecode'];
         $password = $input['password'];
 
-        //test
-//        echo($code);
-//        echo("<br>");
-//        echo($password);
-//        return view('Pages.test');
-
+        //Check the Reserve code
         $authcodeMsg = $this->Authcode($code);
         if(!$authcodeMsg){
-            return redirect()->route('check.show')->with('erro', 'Not this validate code!');
+            session()->flash('erro', 'Not this Reserve Code!');
+            return redirect()->route('check.show')->with('erro', 'Not this Reserve Code!');
         }
+        //Check the Reserve if checked
         $reserved = $this->GetReserve($code);
+        if($reserved->validate == 1){
+            session()->flash('erro', 'This validate code has checked!');
+            return redirect()->route('check.show')->with('erro', 'This validate code has checked!');
+        }
+        //Check the password
         $authPass = $this->Authpassword($reserved->user->email,$password);
         if(!$authPass){
             return redirect()->route('check.show')->with('erro', 'Your password is not Correct!');
         }
-        //adjust the reserve id;
-        ChangeStatus($reserved);
+        //Adjust the validate status;
+        $this->ChangeStatus($reserved);
         return view('Pages.UnitPages.success',['user' => $reserved->user]);
     }
 
@@ -79,7 +83,7 @@ class CheckController extends Controller
 
     public function Authpassword($email,$password):bool
     {
-        $credentials = array($email=>$password);
+        $credentials = array('email'=>$email,"password"=>$password);
         if (Auth::attempt($credentials)) {
             return true;
         }
@@ -87,11 +91,12 @@ class CheckController extends Controller
     }
 
     public function ChangeStatus($reserved){
-        $reserved->valiadte = 1;
+        $reserved->validate = 1;
         $reserved->save();
     }
 
     public function GetReserve($code){
-        return Reserve::where('reserve_code',$code)->get();
+        return Reserve::where('reserve_code',$code)->first();
     }
+
 }

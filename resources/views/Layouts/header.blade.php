@@ -1,44 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
     <div class="container">
-        <!-- Branding Image -->
-        <a class="navbar-brand " href="{{route('root')}}">
-            CodeFrist's Project
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <a class="navbar-brand" href="{{route('root')}}">
+            <img src="{{URL::asset('image/navbar-logo.svg')}}" alt="..." /></a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-
-            </ul>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 @guest
-                    <!-- Authentication Links -->
-                    <ul class="navbar-nav navbar-right">
-                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                 @else
-                    <li class="navbar-nav nav-item"><a class="nav-link" href="{{ route('mainpage') }}">Dashboard</a></li>
-                    <ul class="navbar-nav navbar-right">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="https://cdn.learnku.com/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/60/h/60" class="img-responsive img-circle" width="30px" height="30px">
-                                {{ Auth::user()->name }}
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('users.show', Auth::id()) }}">个人中心</a>
-    {{--                            <a class="dropdown-item" href="">编辑资料</a>--}}
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" id="logout" href="#">
-                                    <form action="{{ route('logout') }}" method="POST">
-                                        {{ csrf_field() }}
-                                        <button class="btn btn-block btn-danger" type="submit" name="button">退出</button>
-                                    </form>
-                                </a>
-                            </div>
-                        </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('mainpage') }}">Dashboard</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="logout" href="#">
+                            <form action="{{ route('logout') }}" method="POST">
+                                {{ csrf_field() }}
+                                <button class="btn btn-block btn-danger" type="submit" name="button">Quit</button>
+                            </form>
+                        </a>
+                    </li>
                 @endguest
             </ul>
         </div>
     </div>
 </nav>
+
+

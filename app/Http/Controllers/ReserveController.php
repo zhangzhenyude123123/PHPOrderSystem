@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ReserveRequest;
-use App\Models\Activity;
 use App\Models\Reserve;
 use App\Models\User;
 
@@ -32,9 +31,7 @@ class ReserveController extends Controller
 
 //        if(!$this->getOneDayCount())
 //            session()->flash('info', 'There’s no more places');
-            //There should be redirect???
-        //There has another function to judge the day;
-        //$current_days = Activity::value('carnival_day');
+//        $current_days = Activity::value('carnival_day');
 //        $current_days = getCarnivalDay();
 //        $max_days = getCarnivalMax();
 
@@ -53,6 +50,24 @@ class ReserveController extends Controller
         if(!$judgeAllDay){
             return redirect()->route('newreserve')->with('warning', 'You have Reserve three day!');
         }
+
+        $day = $this->getReserveDay($reserveRequest);
+
+        $judgeOneDay= $this->getUserDayCount($id,$day);
+        if(!$judgeOneDay){
+            return redirect()->route('newreserve')->with('warning', 'You have Reserve this day!');
+        }
+
+//        return view("Pages.test");
+        $reserve = new Reserve;
+        $reserve->user_id = $user->id;
+        $reserve->reserve_code = "abcdee";
+        $reserve->event_id = $day;
+        $reserve->current_day = getCarnivalDay();
+        $reserve->validate = 0;
+        $reserve->save();
+        return redirect()->route('mainpage')->with('success', 'Reserve is Success！');
+
         //get the input
 //        $input = $reserveRequest->all();
 //        $i = 0;
@@ -72,15 +87,6 @@ class ReserveController extends Controller
 //            }
 //            $i++;
 //        }
-        $day = $this->getReserveDay($reserveRequest);
-
-        $judgeOneDay= $this->getUserDayCount($id,$day);
-        if(!$judgeOneDay){
-            return redirect()->route('newreserve')->with('warning', 'You have Reserve this day!');
-        }
-
-//        return view("Pages.test");
-        return redirect()->route('mainpage')->with('success', 'Reserve is Success！');
     }
 
 

@@ -1,9 +1,13 @@
-@extends('Layouts.index')
-
+@extends('Layouts.app')
 @section('title','Check-In')
-
 @section('content')
-    <div class="col-md-8 offset-md-2">
+
+<div class="contentbox" id="checkbox">
+
+    <div class="container">
+    @include('Tools.message')
+
+    <div class="col-md-8 offset-md-2" id="checkbox">
 
         <div class="card">
             <div class="card-header">
@@ -13,10 +17,9 @@
             </div>
 
             <div class="card-body">
-
                 <form action="{{route('check.auth')}}" method="POST" accept-charset="UTF-8">
                     <input type="hidden" name="_method" value="POST">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+{{--                    <input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
                     @include('Tools.error')
                     <div class="form-group">
                         <label for="email-field">ValidateCode</label>
@@ -32,8 +35,9 @@
                     </div>
                 </form>
             </div>
+
         </div>
     </div>
-
-
+    </div>
+</div>
 @endsection

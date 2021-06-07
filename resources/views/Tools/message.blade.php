@@ -4,9 +4,6 @@
             <p class="alert alert-{{ $msg }}">
                 {{ session()->get($msg) }}
             </p>
-{{--            <script>--}}
-{{--                toastr.success('Have fun storming the castle!', 'Miracle Max Says')--}}
-{{--            </script>--}}
         </div>
     @endif
 @endforeach
