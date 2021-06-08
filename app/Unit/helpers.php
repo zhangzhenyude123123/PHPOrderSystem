@@ -13,5 +13,5 @@ function getCarnivalMax():int
 
 function getCarnivalDay():int{
     //Enter the CurrentDay
-    return 2;
+    return 0;
 }

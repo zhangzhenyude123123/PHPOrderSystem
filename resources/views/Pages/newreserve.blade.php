@@ -20,16 +20,31 @@
                         <form action="{{ route('newreserve.edit',Auth::user()->id) }}" method="POST">
                             <input type="hidden" name="_method" value="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+{{--                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked="">--}}
+{{--                                <label class="btn " for="btnradio1">Radio 1</label>--}}
+{{--                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked="">--}}
+{{--                                <label class="btn" for="btnradio2">Radio 2</label>--}}
+{{--                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked="">--}}
+{{--                                <label class="btn" for="btnradio3">Radio 3</label>--}}
+
                             @include('Tools.error')
                             @for($i=getCarnivalDay()+1;$i<=getCarnivalMax();$i++)
-                                <div class="form-group booking">
-                                    <input type="checkbox" name="input{{$i}}" value="{{$i}}">Day{{$i}}
+                                <div class="form-check booking">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="{{$i}}">
+                                        Day{{$i}}
+                                    </label>
                                 </div>
                             @endfor
+
+
                             <div class="well well-sm">
-                                <button type="submit" class="btn btn-primary">Post</button>
+                                <button type="submit" class="btn btn-outline-dark">Post</button>
                             </div>
+
                         </form>
+
                     </div>
                 </div>
             </div>

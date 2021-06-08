@@ -10094,10 +10094,8 @@ html {
 }
 
 .booking {
-  text-align: center;
   height: 50px;
   width: 100px;
-  border-style: groove;
   margin: 10px;
 }
 
@@ -10107,4 +10105,8 @@ html {
 
 #checkbox {
   margin-top: 140px;
+}
+
+#Reservebutton {
+  margin-bottom: 10px;
 }

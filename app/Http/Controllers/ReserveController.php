@@ -95,7 +95,7 @@ class ReserveController extends Controller
         $i = 0;
         $day = 0;
         foreach ($input as $key => $item){
-            //echo "{$key}==>{$item}<br>";
+            echo "{$key}==>{$item}<br>";
             if($i>1){
                 $day = (int)$item;
             }
@@ -168,7 +168,12 @@ class ReserveController extends Controller
 //TODO:cancel取消从数据中。 Success
 //TODO:签到成功页面3秒跳转 Success
 
-//TODO:预定页面添加js代码，限定只能点一个「改变这个需求」
+//TODO:预定页面添加js代码，限定只能点一个「改变这个需求」Success
+//TODO:dashboard展示邀请码，展示活动日期，Success
+//TODO:删除activity数据库
+//TODO:试验1天中10个预定的提示消息。而且不应该再预定这个。代码控制。
+
+
 
 //TODO:张成伟，用户名添加限制、面面添加限制。
 //TODO:张成伟，生成唯一码。

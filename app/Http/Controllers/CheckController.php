@@ -66,7 +66,7 @@ class CheckController extends Controller
         }
         //Adjust the validate status;
         $this->ChangeStatus($reserved);
-        header("refresh:3;url=/checkin");
+        header("refresh:5;url=/checkin");
         //clear the certificated message
         Auth::logout();
         return view('Pages.UnitPages.success',['user' => $reserved->user]);
