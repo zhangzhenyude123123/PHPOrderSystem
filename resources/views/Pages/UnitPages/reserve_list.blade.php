@@ -16,18 +16,18 @@
                 </td>
                 <td>
                     @if($reserve->validate == 1)
-{{--                        <p>Verified</p>--}}
                         <span class="badge bg-success">Verified</span>
-                    @elseif($reserve->event_id>$reserve->current_day)
+                    @else
+                        @if($reserve->event_id>getCarnivalDay())
                         <form action="{{ route('reserve.cancel',$reserve->id) }}" method="POST">
                             @csrf
                             @method('delete')
-{{--                            <button class="btn btn-block" type="submit" name="button">Cancel</button>--}}
                             <button class="btn btn-primary" type="submit" name="button">Cancel</button>
                         </form>
-                    @elseif($reserve->event_id<$reserve->current_day)
-                        <span class="badge bg-warning">Passed</span>
-{{--                        <p>Passed</p>--}}
+                        @endif
+                        @if($reserve->event_id<getCarnivalDay())
+                            <span class="badge bg-warning">Passed</span>
+                        @endif
                     @endif
                 </td>
             </tr>

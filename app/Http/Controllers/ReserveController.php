@@ -16,25 +16,6 @@ class ReserveController extends Controller
 
     public function newreserve(User $user)
     {
-        //check out of the day
-        $judgenum = 0;
-        $message = 'No More places in Day ';
-        for($i = getCarnivalDay()+1;$i<=getCarnivalMax();$i++){
-            if(!$this->getOneDayCount($i)){
-                $message .= '{$i}'." ";
-                $judgenum++;
-            }
-        }
-        if($judgenum>0){
-            session()->flash('info', $message);
-        }
-
-//        if(!$this->getOneDayCount())
-//            session()->flash('info', 'There’s no more places');
-//        $current_days = Activity::value('carnival_day');
-//        $current_days = getCarnivalDay();
-//        $max_days = getCarnivalMax();
-
         return view("Pages.newreserve",
             compact('user'));
     }
@@ -45,22 +26,49 @@ class ReserveController extends Controller
 
         $id = $user->id;
 
+        $day = $this->getReserveDay($reserveRequest);
+
+        $FullJudge = $this->getOneDayCount($day);
+        if(!$FullJudge){
+            return redirect()->route('newreserve')->with('warning', 'Selecting this day have no more reservation!');
+        }
+
         //check people for all days
         $judgeAllDay= $this->getUserDayCountAll($id);
         if(!$judgeAllDay){
             return redirect()->route('newreserve')->with('warning', 'You have Reserve three day!');
         }
 
-        $day = $this->getReserveDay($reserveRequest);
 
-        $judgeOneDay= $this->getUserDayCount($id,$day);
+        $judgeOneDay= $this->getUserDayCount($id);
         if(!$judgeOneDay){
-            return redirect()->route('newreserve')->with('warning', 'You have Reserve this day!');
+            return redirect()->route('newreserve')->with('warning', 'You have Reserve Today!');
         }
 
         $reserve = new Reserve;
         $reserve->user_id = $user->id;
-        $reserve->reserve_code = "abcdee";
+
+        //Getcode
+        $flag = false;
+        $code = '';
+        while(!$flag){
+            $str = 'abcdefghijklmnopqrstuvwxyz';
+            $len = strlen($str)-1;
+            for ($i=0;$i<6;$i++) {
+                $num=mt_rand(0,$len);
+                $code .= $str[$num];
+            }
+            $have = false;
+            $reservenum = Reserve::where('reserve_code',$code)
+                ->count();
+            if($reservenum>0){
+                $have = true;
+            }
+            if (!$have)
+                $flag = true;
+        }
+
+        $reserve->reserve_code = $code;
         $reserve->event_id = $day;
         $reserve->current_day = getCarnivalDay();
         $reserve->validate = 0;
@@ -88,14 +96,13 @@ class ReserveController extends Controller
 //        }
     }
 
-
     public function getReserveDay(ReserveRequest $reserveRequest):int
     {
         $input = $reserveRequest->all();
         $i = 0;
         $day = 0;
         foreach ($input as $key => $item){
-            echo "{$key}==>{$item}<br>";
+//            echo "{$key}==>{$item}<br>";
             if($i>1){
                 $day = (int)$item;
             }
@@ -108,9 +115,9 @@ class ReserveController extends Controller
      * Judge if the user has reserve
      * @return bool
      */
-    public function getUserDayCount($id,$day): bool
+    public function getUserDayCount($id): bool
     {
-        $current_day = $day;
+        $current_day = getCarnivalDay();
         $reservenum = Reserve::where('user_id',$id)
             ->where('current_day',$current_day)->count();
         if($reservenum>0) {
@@ -129,7 +136,7 @@ class ReserveController extends Controller
     {
         $reservenum = Reserve::where('user_id',$id)
             ->count();
-        if($reservenum<=3) {
+        if($reservenum<3) {
             return true;
         }
         else {
@@ -143,10 +150,10 @@ class ReserveController extends Controller
      */
     public function getOneDayCount($day): bool
     {
-        $current_day = $day;
-        $reservenum = Reserve::where('current_day',$current_day)
+        $order_day = $day;
+        $reservenum = Reserve::where('event_id',$order_day)
             ->count();
-        if($reservenum<=10) {
+        if($reservenum<10) {
             return true;
         }
         else {
@@ -170,10 +177,7 @@ class ReserveController extends Controller
 
 //TODO:预定页面添加js代码，限定只能点一个「改变这个需求」Success
 //TODO:dashboard展示邀请码，展示活动日期，Success
-//TODO:删除activity数据库
-//TODO:试验1天中10个预定的提示消息。而且不应该再预定这个。代码控制。
-
-
-
-//TODO:张成伟，用户名添加限制、面面添加限制。
-//TODO:张成伟，生成唯一码。
+//TODO:删除activity数据库 Success
+//TODO:试验1天中10个预定的提示消息。而且不应该再预定这个。代码控制。 Success
+//TODO:张成伟，用户名添加限制、面面添加限制。 Success
+//TODO:张成伟，生成唯一码。 Success

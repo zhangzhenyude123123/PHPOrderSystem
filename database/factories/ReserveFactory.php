@@ -23,9 +23,9 @@ class ReserveFactory extends Factory
     {
         return [
             'user_id'=> $this->faker->randomNumber(),
-            'reserve_code'=>$this->faker->text(),
-            'event_id'=>$this->faker->randomNumber(),
-            'current_day'=>$this->faker->randomNumber(),
+            'reserve_code'=>$this->faker->randomAscii(),
+            'event_id'=>$this->faker->numberBetween(1,1),
+            'current_day'=>$this->faker->numberBetween(0,0),
             'validate'=>$this->faker->numberBetween(0,0)
         ];
     }
