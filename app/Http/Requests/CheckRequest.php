@@ -14,11 +14,6 @@ class CheckRequest extends FormRequest
      */
     public function authorize(Request $request)
     {
-//        $input = $request->all();
-//        foreach ($input as $item){
-//            echo($item);
-//            echo("<br>");
-//        }
         return true;
     }
 

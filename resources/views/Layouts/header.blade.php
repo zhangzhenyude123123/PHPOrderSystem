@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="{{route('firstpage.show')}}">
-            <img src="{{URL::asset('image/navbar-logo.svg')}}" alt="..." /></a>
+            <img  id = "logopic" src="{{URL::asset('image/navbar-logo-base.svg')}}" alt="..." /></a>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
                 @guest

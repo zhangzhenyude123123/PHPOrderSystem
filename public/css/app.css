@@ -10007,7 +10007,6 @@ body {
   font-size: 14px;
 }
 
-/* header */
 html {
   position: relative;
   min-height: 100%;
@@ -10109,4 +10108,9 @@ html {
 
 #Reservebutton {
   margin-bottom: 10px;
+}
+
+#logopic {
+  height: 10px;
+  width: auto;
 }

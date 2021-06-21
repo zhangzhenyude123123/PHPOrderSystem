@@ -22,7 +22,8 @@ class MainPageController extends Controller
         return view('Pages.dashboard',['reserves' => $reserves]);
     }
 
-    public function cancelreserve($reserve_id){
+    public function cancelreserve($reserve_id)
+    {
         $reserve = Reserve::where('id',$reserve_id)->first();
         $reserve->delete();
         return redirect()->route('mainpage');

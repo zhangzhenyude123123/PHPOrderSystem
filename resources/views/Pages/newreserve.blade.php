@@ -21,12 +21,6 @@
                             <input type="hidden" name="_method" value="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-{{--                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked="">--}}
-{{--                                <label class="btn " for="btnradio1">Radio 1</label>--}}
-{{--                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked="">--}}
-{{--                                <label class="btn" for="btnradio2">Radio 2</label>--}}
-{{--                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked="">--}}
-{{--                                <label class="btn" for="btnradio3">Radio 3</label>--}}
 
                             @include('Tools.error')
                             @for($i=getCarnivalDay()+1;$i<=getCarnivalMax();$i++)
@@ -51,12 +45,4 @@
         </div>
     </div>
 
-
-{{--    <script>--}}
-{{--        $(document).ready(function(){--}}
-{{--            $('#checkGroup').find('checknumber').bind('click', function(){--}}
-{{--                $('#checkGroup').find('input[type=checkbox]').not(this).attr("checked", false);--}}
-{{--            });--}}
-{{--        });--}}
-{{--    </script>--}}
 @endsection

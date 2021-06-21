@@ -4,7 +4,6 @@
 
 <div class="container">
     <div class="contentbox">
-{{--        <span><a href="{{route('newreserve')}}">Newreserve</a></span>--}}
         <div id="Reservebutton">
         <a href="{{route('newreserve')}}"><input type="button" class="btn btn-outline-dark" value='NewReserve'></a>
         </div>
