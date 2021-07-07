@@ -2,23 +2,17 @@
 
 ## Teammate
 
-ZHANG Zhenyu 299920 
+ZHANG Zhenyu 
+LIU Ruihang 
 
-LI Guanlong 299940 
-
-ZHANG Chenwei 299949
-
-ZHAO Haoran  299897
 
 ## Cooperation
 
-ZHANG Zhenyu : Design project structure, Complete Register ,Login and Dashboard function
-
-LI Guanlong : Complete the Check-In function, Participate in database design
-
-ZHANG Chenwei : Complete the reservation function, Participate in database design
-
-ZHAO Haoran : Page design and UI development
+ZHANG Zhenyu :
+1. Design project structure, Complete Register ,Login and Dashboard function
+2. Complete the Check-In function, Participate in database design
+3. Complete the reservation function, Participate in database design
+4. Page design and UI development
 
 ## Quick Setup
 
