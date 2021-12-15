@@ -6,7 +6,7 @@ My Work:
 
 II. Specification
 
-**1. **The “Main Module“
+**1. The “Main Module“**
 
 1.1 The “Main Page” Module
 
